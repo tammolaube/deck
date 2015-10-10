@@ -1,0 +1,15 @@
+{
+  "name": "tammolaube.com",
+  "version": "1.0.0",
+  "description": "Hompage of Tammo Laube",
+  "main": "index.js",
+  "dependencies": {
+    "bower": "^1.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node_test"
+  },
+  "author": "Tammo Laube",
+  "license": "ISC"
+}

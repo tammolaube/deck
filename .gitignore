@@ -1,3 +1,4 @@
+# Grails default gitignore
 Thumbs.db
 .DS_Store
 .gradle
@@ -9,3 +10,9 @@ build/
 .project
 .settings
 .classpath
+
+# Node
+node_modules/
+
+# Bower
+bower_components/
