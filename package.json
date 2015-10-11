@@ -1,7 +1,7 @@
 {
   "name": "tammolaube.com",
   "version": "1.0.0",
-  "description": "Hompage of Tammo Laube",
+  "description": "Extend the gradle build process with bower",
   "main": "index.js",
   "dependencies": {
     "bower": "^1.5.3"

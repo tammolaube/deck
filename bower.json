@@ -4,7 +4,7 @@
   "authors": [
     "Tammo Laube <tammolaube@gmail.com>"
   ],
-  "description": "Homepage of Tammo Laube",
+  "description": "Dependencies for homepage of Tammo Laube",
   "main": "",
   "moduleType": [],
   "license": "MIT",
@@ -18,7 +18,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "4",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "bootstrap": "4"
   }
 }
