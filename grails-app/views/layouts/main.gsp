@@ -1,19 +1,22 @@
-<!doctype html>
-<html lang="en" class="no-js">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title><g:layoutTitle default="Grails"/></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <asset:stylesheet src="application.css"/>
-        <asset:javascript src="application.js"/>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <g:layoutHead/>
-    </head>
-    <body>
-        <div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
-        <g:layoutBody/>
-        <div class="footer" role="contentinfo"></div>
-        <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-    </body>
+    <asset:stylesheet src="application.css"/>
+
+    <g:layoutHead/>
+  </head>
+  <body>
+
+    <div class="container">
+      <g:layoutBody/>
+    </div>
+
+    <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+
+    <asset:javascript src="application.js"/>
+  </body>
 </html>
