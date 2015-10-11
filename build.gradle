@@ -127,6 +127,7 @@ task bowerSyncStylesheets(type: Sync) {
 
 task bowerSyncJavascript(type: Sync) {
     from 'bower_components/bootstrap/dist/js/bootstrap.js'
+    from 'bower_components/jquery/dist/jquery.js'
     into "grails-app/assets/javascripts/bower_components"
     dependsOn bowerInstall
 }
