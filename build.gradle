@@ -22,7 +22,7 @@ apply plugin: "application"
 apply plugin: "com.moowork.node" // for Node, Npm on which Bower depends
 
 springBoot {
-    mainClass = "com.tammolaube.site.Controller"
+    mainClass = "com.tammolaube.site.Application"
 }
 
 node {
