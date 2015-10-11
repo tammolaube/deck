@@ -6,13 +6,13 @@ buildscript {
         mavenLocal()
         maven {
             url "https://repo.grails.org/grails/core"
-//            url "https://plugins.gradle.org/m2"
         }
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath 'com.bertramlabs.plugins:asset-pipeline-gradle:2.5.0'
         classpath "org.grails.plugins:hibernate:4.3.10.5"
+        // for Node & Npm
         classpath "com.moowork.gradle:gradle-node-plugin:0.11"
     }
 }
@@ -31,6 +31,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: "org.grails.grails-web"
 apply plugin: "org.grails.grails-gsp"
+// for Node, Npm on which Bower depends
 apply plugin: "com.moowork.node"
 
 ext {
@@ -89,6 +90,7 @@ task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
 
+// Node & Npm for Bower
 task npmCacheConfig(type: NpmTask) {
     description = "Configure the NPM cache"
     def npmCacheDir = "${gradle.getGradleUserHomeDir()}/caches/npm"
@@ -103,6 +105,10 @@ task npmPackages(type: NpmTask, dependsOn: npmCacheConfig) {
     outputs.files file('node_modules')
 }
 
+clean.delete << file('node_modules')
+// end Node & Npm
+
+// Bower
 task bowerInstall(type: NodeTask, dependsOn: npmPackages) {
     script = file('node_modules/bower/bin/bower')
     args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
@@ -112,3 +118,27 @@ task bowerInstall(type: NodeTask, dependsOn: npmPackages) {
     inputs.files file('bower.json')
     outputs.files file('bower_components')
 }
+
+task bowerSyncStylesheets(type: Sync) {
+    from 'bower_components/bootstrap/dist/css/bootstrap.css'
+    into "grails-app/assets/stylesheets/bower_components"
+    dependsOn bowerInstall
+}
+
+task bowerSyncJavascript(type: Sync) {
+    from 'bower_components/bootstrap/dist/js/bootstrap.js'
+    into "grails-app/assets/javascripts/bower_components"
+    dependsOn bowerInstall
+}
+
+task bowerPackages() {
+    dependsOn bowerSyncJavascript, bowerSyncStylesheets
+}
+
+processResources.dependsOn bowerPackages
+assetCompile.dependsOn bowerPackages
+
+clean.delete << file('grails-app/assets/javascripts/bower_components')
+clean.delete << file('grails-app/assets/stylesheets/bower_components')
+clean.delete << file('bower_components')
+// end Bower
