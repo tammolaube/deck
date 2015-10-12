@@ -4,9 +4,9 @@
   "description": "Extend the gradle build process with bower",
   "main": "index.js",
   "dependencies": {
-    "bower": "^1.5.3"
+    "bower": "^1.5.3",
+    "node-sass": "^3.3.3"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "node_test"
   },

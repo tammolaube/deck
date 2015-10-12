@@ -72,6 +72,11 @@ task bowerPackages() {
     dependsOn bowerSyncJavascript, bowerSyncStylesheets
 }
 
+task sassPackages(type: NodeTask, dependsOn: npmPackages) {
+    script = file('node_modules/node-sass/bin/node-sass')
+    args = ['src/main/sass', '-o', 'src/main/resources/static/css']
+}
+
 clean.delete << file('grails-app/assets/javascripts/bower_components')
 clean.delete << file('grails-app/assets/stylesheets/bower_components')
 clean.delete << file('bower_components')

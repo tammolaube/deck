@@ -1,14 +1,13 @@
 package com.tammolaube.site.controllers
 
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.servlet.ModelAndView
 
-@RestController
+@Controller
 public class Main {
-
     @RequestMapping("/")
-    String home() {
-        "Hello World!"
+    def home() {
+        new ModelAndView("views/home")
     }
-
 }
