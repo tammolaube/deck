@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "Extend the gradle build process with bower",
   "main": "index.js",
-  "dependencies": {
-    "bower": "^1.5.3",
-    "node-sass": "^3.3.3"
-  },
   "scripts": {
     "test": "node_test"
   },
   "author": "Tammo Laube",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "bower": "^1.5.3",
+    "browserify": "^11.2.0",
+    "node-sass": "^3.3.3"
+  },
+  "dependencies": {
+    "angular": "^1.4.7"
+  }
 }

@@ -15,6 +15,9 @@ build/
 # Sass no need for css in repo
 src/main/resources/static/css/
 
+# Browserify no need for js in repo
+src/main/resources/static/js/
+
 # Node
 node_modules/
 

@@ -21,6 +21,15 @@ apply plugin: "spring-boot"
 apply plugin: "application"
 apply plugin: "com.moowork.node" // for Node, Npm on which Bower depends
 
+ext {
+    staticResources = 'src/main/resources/static'
+    npmModules = 'node_modules'
+    npmConfig = 'package.json'
+    bowerComponents = 'bower_components'
+    bowerConfig = 'bower.json'
+    bowerSassTarget = "src/main/sass/bower_components"
+}
+
 springBoot {
     mainClass = "com.tammolaube.site.Application"
 }
@@ -41,8 +50,8 @@ task npmCacheConfig(type: NpmTask) { // Node & Npm for Bower
 task npmPackages(type: NpmTask, dependsOn: npmCacheConfig) {
     description = "Install Node.js packages"
     args = [ 'install' ]
-    inputs.files file('package.json')
-    outputs.files file('node_modules')
+    inputs.files file(npmConfig)
+    outputs.files file(npmModules)
 }
 
 task bowerInstall(type: NodeTask, dependsOn: npmPackages) {
@@ -51,34 +60,26 @@ task bowerInstall(type: NodeTask, dependsOn: npmPackages) {
             "--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
             "--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
             'install']
-    inputs.files file('bower.json')
-    outputs.files file('bower_components')
+    inputs.files file(bowerConfig)
+    outputs.files file(bowerComponents)
 }
 
-task bowerSyncStylesheets(type: Sync) {
-    from 'bower_components/bootstrap/dist/css/bootstrap.css'
-    into "grails-app/assets/stylesheets/bower_components"
-    dependsOn bowerInstall
+task bowerSyncScss(type: Sync, dependsOn: bowerInstall) {
+    from 'bower_components/bootstrap/scss/'
+    into bowerSassTarget
 }
 
-task bowerSyncJavascript(type: Sync) {
-    from 'bower_components/bootstrap/dist/js/bootstrap.js'
-    from 'bower_components/jquery/dist/jquery.js'
-    into "grails-app/assets/javascripts/bower_components"
-    dependsOn bowerInstall
-}
-
-task bowerPackages() {
-    dependsOn bowerSyncJavascript, bowerSyncStylesheets
-}
-
-task sassPackages(type: NodeTask, dependsOn: npmPackages) {
+task sass(type: NodeTask, dependsOn: bowerSyncScss) {
     script = file('node_modules/node-sass/bin/node-sass')
-    args = ['src/main/sass', '-o', 'src/main/resources/static/css']
+    args = ['src/main/sass/bundle.sass', '-o', 'src/main/resources/static/css']
 }
 
-clean.delete << file('grails-app/assets/javascripts/bower_components')
-clean.delete << file('grails-app/assets/stylesheets/bower_components')
+task browserify(type: NodeTask, dependsOn: npmPackages) {
+    script = file('node_modules/browserify/bin/cmd.js')
+    args = ['src/main/browserify/main.js', '-o', 'src/main/resources/static/js/bundle.js']
+}
+
+clean.delete << file(staticResources)
 clean.delete << file('bower_components')
 clean.delete << file('node_modules')
 
