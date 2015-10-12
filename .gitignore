@@ -12,6 +12,9 @@ build/
 .classpath
 .asscache
 
+# Sass no need for css in repo
+src/main/resources/static/css/
+
 # Node
 node_modules/
 
