@@ -2,9 +2,12 @@ layout 'layouts/twoColumn.tpl',
     title: 'Tammo Laube Home',
     leftColumn: contents {
         div (class:'card') {
-            img class:'card-img-top img-responsive',
-                alt:'Card Background',
-                src:'http://instagram.com/p/67nWW_N9a-/media/?size=l'
+            div (class:'card-block tl-img-crop') {
+                img class:'card-img-top img-responsive',
+                    alt:'Card Background',
+//                    src:'http://instagram.com/p/67nWW_N9a-/media/?size=l'
+                    src:'http://instagram.com/p/6Djht4N9dN/media/?size=l'
+            }
             div (class:'card-block text-center') {
                 p {
                     img class:'''img-circle img-thumbnail img-responsive
