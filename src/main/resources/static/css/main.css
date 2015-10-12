@@ -1,0 +1,10 @@
+body {
+  padding-top: 50px;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6; }
+
+.card .card-block .tl-img-profile {
+  height: 150px;
+  width: 150px;
+  margin-top: -100px; }
