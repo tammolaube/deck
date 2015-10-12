@@ -15,15 +15,15 @@ layout 'layouts/twoColumn.tpl',
                                  alt:'Picture of me',
                                  src:'http://instagram.com/p/jirvdet9Y0/media/?size=l'
                 }
-                h5 (class:'card-title') { 
+                h5 (class:'card-title') {
                     yield 'Tammo Laube'
                     br()
                     small class:'text-muted', 'Web App Developer'
                 }
                 p (class:'card-text') {
                     yield '''I'm a freelance developer based in Frankfurt/Main,
-                    Germany, specialising in building web apps with AngularJS in the
-                    front and Django or Spring Boot in the backend.'''
+                    Germany, specialising in building web apps with AngularJS at
+                    the front- and Django or Spring Boot at the backend.'''
                 }
             }
         }
