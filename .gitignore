@@ -26,3 +26,6 @@ bower_components/
 
 # Vim
 *.swp
+
+# Other
+*.log
