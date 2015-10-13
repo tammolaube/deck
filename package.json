@@ -15,5 +15,28 @@
   },
   "dependencies": {
     "angular": "^1.4.7"
+  },
+  "scripts": {
+    "styleIn": "echo src/main/sass/bundle.sass",
+    "scriptIn": "echo src/main/browserify/bundle.js",
+    "styleDist": "echo src/main/resources/static/css/",
+    "scriptDist": "echo src/main/resources/static/js/",
+    "styleOut": "echo bundle.css",
+    "scriptOut": "echo bundle.js",
+
+    "build": "export styleIn=$(npm run styleIn -s) scriptIn=$(npm run scriptIn -s) styleDist=$(npm run styleDist -s) scriptDist=$(npm run scriptDist -s) && export styleOut=$styleDist/$(npm run styleOut -s) scriptOut=$scriptDist/$(npm run scriptOut -s) && npm run build:setup",
+    "build:setup": "npm run bower && npm run clean && npm run build:start",
+    "bower:install": "bower install bootstrap#4",
+    "bower:sync": "mkdir src/main/sass/bower_components -p && cp -r bower_components/bootstrap/scss/** src/main/sass/bower_components",
+    "bower": "npm run bower:install && npm run bower:sync",
+    "clean": "rm -r $styleDist && rm -r $scriptDist",
+
+    "build:start": "npm run build:styles && npm run build:scripts",
+
+    "prebuild:styles": "mkdir $styleDist -p",
+    "build:styles": "node-sass $styleIn > $styleOut",
+
+    "prebuild:scripts": "mkdir $scriptDist -p",
+    "build:scripts": "browserify $scriptIn > $scriptOut"
   }
 }
