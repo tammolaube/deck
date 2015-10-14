@@ -4,39 +4,41 @@
   "description": "Extend the gradle build process with bower",
   "main": "index.js",
   "scripts": {
-    "test": "node_test"
+    "sassIn": "echo src/main/sass/bundle.sass",
+    "jsIn": "echo src/main/browserify/bundle.js",
+    "cssOut": "echo src/main/resources/static/css/bundle.css",
+    "jsOut": "echo src/main/resources/static/js/bundle.js",
+    "vars": "echo sassIn=$(npm run sassIn -s) jsIn=$(npm run jsIn -s) cssOut=$(npm run cssOut -s) jsOut=$(npm run jsOut -s)",
+
+    "build": "export $(npm run vars -s) && npm run build:setup && npm run build:sass && npm run build:js",
+    "build:setup": "npm run clean && npm run bower",
+
+    "clean": "rm $cssOut && rm $jsOut",
+
+    "bower:install": "bower install bootstrap#4 -s",
+    "bower:sync": "mkdir src/main/sass/bower_components -p && cp -r bower_components/bootstrap/scss/** src/main/sass/bower_components",
+    "bower": "npm run bower:install && npm run bower:sync",
+
+    "prebuild:sass": "mkdir -p $(dirname $cssOut)",
+    "build:sass": "node-sass $sassIn > $cssOut",
+
+    "prebuild:js": "mkdir -p $(dirname $jsOut)",
+    "build:js": "browserify $jsIn > $jsOut",
+
+    "watch": "export $(npm run vars -s) && parallelshell 'npm run watch:sass' 'npm run watch:js'",
+    "watch:sass": "watch 'npm run build:sass' $(dirname $sassIn)",
+    "watch:js": "watch 'npm run build:js' $(dirname $jsIn)"
   },
   "author": "Tammo Laube",
   "license": "ISC",
   "devDependencies": {
     "bower": "^1.5.3",
     "browserify": "^11.2.0",
-    "node-sass": "^3.3.3"
+    "node-sass": "^3.3.3",
+    "parallelshell": "^2.0.0",
+    "watch": "^0.16.0"
   },
   "dependencies": {
     "angular": "^1.4.7"
-  },
-  "scripts": {
-    "styleIn": "echo src/main/sass/bundle.sass",
-    "scriptIn": "echo src/main/browserify/bundle.js",
-    "styleDist": "echo src/main/resources/static/css/",
-    "scriptDist": "echo src/main/resources/static/js/",
-    "styleOut": "echo bundle.css",
-    "scriptOut": "echo bundle.js",
-
-    "build": "export styleIn=$(npm run styleIn -s) scriptIn=$(npm run scriptIn -s) styleDist=$(npm run styleDist -s) scriptDist=$(npm run scriptDist -s) && export styleOut=$styleDist/$(npm run styleOut -s) scriptOut=$scriptDist/$(npm run scriptOut -s) && npm run build:setup",
-    "build:setup": "npm run bower && npm run clean && npm run build:start",
-    "bower:install": "bower install bootstrap#4",
-    "bower:sync": "mkdir src/main/sass/bower_components -p && cp -r bower_components/bootstrap/scss/** src/main/sass/bower_components",
-    "bower": "npm run bower:install && npm run bower:sync",
-    "clean": "rm -r $styleDist && rm -r $scriptDist",
-
-    "build:start": "npm run build:styles && npm run build:scripts",
-
-    "prebuild:styles": "mkdir $styleDist -p",
-    "build:styles": "node-sass $styleIn > $styleOut",
-
-    "prebuild:scripts": "mkdir $scriptDist -p",
-    "build:scripts": "browserify $scriptIn > $scriptOut"
   }
 }
