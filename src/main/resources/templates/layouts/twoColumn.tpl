@@ -1,5 +1,4 @@
-layout 'layouts/base.tpl',
-    title: title,
+layout 'layouts/base.tpl', true,
     container: contents {
         div(class:'row') {
             div(class:'col-lg-4 col-md-5 col-sm-12') {

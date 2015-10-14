@@ -27,7 +27,11 @@
 
     "watch": "export $(npm run vars -s) && parallelshell 'npm run watch:sass' 'npm run watch:js'",
     "watch:sass": "watch 'npm run build:sass' $(dirname $sassIn)",
-    "watch:js": "watch 'npm run build:js' $(dirname $jsIn)"
+    "watch:js": "watch 'npm run build:js' $(dirname $jsIn)",
+
+    "live-reload": "live-reload --port 9091 src/main/resources/",
+
+    "dev": "parallelshell 'npm run live-reload -s' 'npm run watch -s'"
   },
   "author": "Tammo Laube",
   "license": "ISC",
@@ -36,7 +40,8 @@
     "browserify": "^11.2.0",
     "node-sass": "^3.3.3",
     "parallelshell": "^2.0.0",
-    "watch": "^0.16.0"
+    "watch": "^0.16.0",
+    "live-reload": "latest"
   },
   "dependencies": {
     "angular": "^1.4.7"

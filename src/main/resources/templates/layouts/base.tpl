@@ -19,5 +19,8 @@ html(lang:'en') {
         }
 
         script(src:'/js/bundle.js') {}
+
+        /* implemented activeProfiles with a interceptor albeit not necessary */
+        if (dev) script(src:'//localhost:9091/') {}
     }
 }

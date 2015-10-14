@@ -1,4 +1,4 @@
-layout 'layouts/twoColumn.tpl',
+layout 'layouts/twoColumn.tpl', true,
     title: 'Tammo Laube Home',
     leftColumn: contents {
         div (class:'card') {

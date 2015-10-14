@@ -36,6 +36,10 @@ node {
     download = false
 }
 
+tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {
+    systemProperty('spring.profiles.active', 'development')
+}
+
 task npmCacheConfig(type: NpmTask) { // Node & Npm for Bower
     description = "Configure the NPM cache"
     def npmCacheDir = "${gradle.getGradleUserHomeDir()}/caches/npm"
