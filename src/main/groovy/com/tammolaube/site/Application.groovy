@@ -15,7 +15,7 @@ public class Application extends WebMvcConfigurerAdapter {
 
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors registry
-        
+
         registry.addInterceptor environmentInterceptor
     }
 
