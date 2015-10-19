@@ -9,28 +9,20 @@
     "cssOut": "echo src/main/resources/static/css/bundle.css",
     "jsOut": "echo src/main/resources/static/js/bundle.js",
     "vars": "echo sassIn=$(npm run sassIn -s) jsIn=$(npm run jsIn -s) cssOut=$(npm run cssOut -s) jsOut=$(npm run jsOut -s)",
-
     "build": "export $(npm run vars -s) && npm run build:setup && npm run build:sass && npm run build:js",
     "build:setup": "npm run clean && npm run bower",
-
     "clean": "rm $cssOut && rm $jsOut",
-
     "bower:install": "bower install bootstrap#4 -s",
     "bower:sync": "mkdir src/main/sass/bower_components -p && cp -r bower_components/bootstrap/scss/** src/main/sass/bower_components",
     "bower": "npm run bower:install && npm run bower:sync",
-
     "prebuild:sass": "mkdir -p $(dirname $cssOut)",
     "build:sass": "node-sass $sassIn > $cssOut",
-
     "prebuild:js": "mkdir -p $(dirname $jsOut)",
     "build:js": "browserify $jsIn > $jsOut",
-
     "watch": "export $(npm run vars -s) && parallelshell 'npm run watch:sass' 'npm run watch:js'",
     "watch:sass": "watch 'npm run build:sass' $(dirname $sassIn)",
     "watch:js": "watch 'npm run build:js' $(dirname $jsIn)",
-
     "live-reload": "live-reload --port 9091 src/main/resources/",
-
     "dev": "parallelshell 'npm run live-reload -s' 'npm run watch -s'"
   },
   "author": "Tammo Laube",
@@ -44,6 +36,9 @@
     "live-reload": "latest"
   },
   "dependencies": {
-    "angular": "^1.4.7"
+    "angular": "^1.4.7",
+    "angular-sanitize": "^1.4.7",
+    "lodash": "^3.10.1",
+    "showdown": "^1.3.0"
   }
 }
