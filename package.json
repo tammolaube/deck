@@ -4,8 +4,8 @@
   "description": "Extend the gradle build process with bower",
   "main": "index.js",
   "scripts": {
-    "sassIn": "echo src/main/sass/bundle.sass",
-    "jsIn": "echo src/main/browserify/bundle.js",
+    "sassIn": "echo src/main/sass/main.sass",
+    "jsIn": "echo src/main/browserify/main.js",
     "cssOut": "echo src/main/resources/static/css/bundle.css",
     "jsOut": "echo src/main/resources/static/js/bundle.js",
     "vars": "echo sassIn=$(npm run sassIn -s) jsIn=$(npm run jsIn -s) cssOut=$(npm run cssOut -s) jsOut=$(npm run jsOut -s)",
