@@ -27,8 +27,15 @@ layout 'layouts/twoColumn.tpl', true,
                 }
             }
         }
-        div ('ng-controller':'CardListCtrl') {
-            'ng-include' src:"cardListPartial"
+        div ('ng-controller':'CardFormCtrl') {
+            div (class:'text-center text-muted') {
+                h6 'Edit Cards:'
+            }
+            include template:'partials/editCards.tpl'
+            div (class:'text-center text-muted') {
+                h6 'Create New Card:'
+            }
+            include template:'partials/createCard.tpl'
         }
     },
     rightColumn: contents {

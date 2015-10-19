@@ -14,12 +14,12 @@ class Card {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     int id
-    int index
-    String title
+    int priority
+    String header
     String body
     String footer
     String contextClass
 
-    String toString() { "$index:$title/$id" }
+    String toString() { "Card: $id" }
 
 }
