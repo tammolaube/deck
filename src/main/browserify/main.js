@@ -4,10 +4,19 @@ var showdown = require('showdown');
 
 var tammolaube = angular.module('tammolaube', [require('angular-sanitize')]);
 
-tammolaube.controller('CardListCtrl',
+tammolaube.controller('AboutMeCtrl',
                         ['$scope', '$http', function($scope, $http) {
 
-    $scope.cardListPartial = '/partials/cardList';
+    $scope.converter = new showdown.Converter();
+
+    $http.get('/aboutme').success(function(data) {
+        $scope.aboutMe = data;
+    });
+
+}]);
+
+tammolaube.controller('CardListCtrl',
+                        ['$scope', '$http', function($scope, $http) {
 
     $scope.converter = new showdown.Converter();
 
@@ -15,6 +24,58 @@ tammolaube.controller('CardListCtrl',
         $scope.cards = data;
     });
 
+}]);
+
+tammolaube.controller('AboutMeFormCtrl',
+                        ['$scope', '$http', function($scope, $http) {
+
+    $scope.converter = new showdown.Converter();
+
+    $http.get('/aboutme/all').success(function(data) {
+        $scope.aboutMes = data;
+    });
+
+    $scope.create = function() {
+        console.log('Create:');
+        console.log($scope.newAboutMe);
+        $http.post('/aboutme', $scope.newAboutMe).then(
+            function successCallback(response) {
+                $scope.aboutMes.push(response.data);
+                $scope.newAboutMe = null;
+                $scope.newAboutMeForm.$setPristine();
+            }, function errorCallback(response) {
+            }
+        );
+    };
+
+    $scope.save = function(aboutMe) {
+        console.log('Save:');
+        console.log(aboutMe);
+        $http.post('/aboutme', aboutMe).then(
+            function successCallback(response) {
+                var aboutMe = response.data;
+                // remove add to make form pristine
+                _.remove($scope.aboutMes, function(aboutMeA) {
+                    return aboutMeA.id == aboutMe.id;
+                });
+                $scope.aboutMes.push(aboutMe);
+            }, function errorCallback(response) {
+            }
+        );
+    };
+
+    $scope.delete = function(aboutMe) {
+        console.log('Delete:');
+        console.log(aboutMe);
+        $http.delete('/aboutme/' + aboutMe.id).then(
+            function successCallback(response) {
+                _.remove($scope.aboutMe, function(aboutMeA) {
+                    return aboutMeA.id == aboutMe.id;
+                });
+            }, function errorCallback(response) {
+            }
+        );
+    };
 }]);
 
 tammolaube.controller('CardFormCtrl',
