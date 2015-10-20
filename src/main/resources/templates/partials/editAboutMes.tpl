@@ -19,8 +19,8 @@ yieldUnescaped '''
                class="form-control"></textarea>
         </fieldset>
       <fieldset class="form-group">
-        <input ng-model="aboutMe.profile"
-               placeholder="Profile Picture"
+        <input ng-model="aboutMe.portrait"
+               placeholder="Portrait"
                class="form-control"/>
       </fieldset>
       <fieldset class="form-group">

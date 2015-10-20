@@ -8,9 +8,9 @@ yieldunescaped '''
     </div>
     <div class="card-block text-center">
       <p>
-        <img class="img-circle img-thumbnail img-responsive tl-img-profile"
+        <img class="img-circle img-thumbnail img-responsive tl-img-protrait"
              alt="Picture of me"
-             src="{{ aboutMe.profile }}">
+             src="{{ aboutMe.portrait }}">
       </p>
       <h5 class="card-title">{{ aboutMe.name }}<br>
         <small class="text-muted">{{ aboutMe.title }}</small>

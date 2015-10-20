@@ -69,7 +69,7 @@ tammolaube.controller('AboutMeFormCtrl',
         console.log(aboutMe);
         $http.delete('/aboutme/' + aboutMe.id).then(
             function successCallback(response) {
-                _.remove($scope.aboutMe, function(aboutMeA) {
+                _.remove($scope.aboutMes, function(aboutMeA) {
                     return aboutMeA.id == aboutMe.id;
                 });
             }, function errorCallback(response) {
