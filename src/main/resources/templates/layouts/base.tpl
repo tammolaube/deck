@@ -1,5 +1,5 @@
 yieldUnescaped '<!DOCTYPE html>'
-html(lang:'en', 'ng-app':'tammolaube', 'ng-cloak':'') {
+html(lang:'en', 'ng-app':'tammolaube', 'ng-cloak':'', class='ng-cloak') {
     head {
         meta(charset:'utf-8')
         meta(name:'viewport', content:'width=device-width, initial-scale=1')
