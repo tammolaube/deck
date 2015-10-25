@@ -13,11 +13,11 @@ var tammolaube = angular.module(
 tammolaube.config(function($routeProvider, $locationProvider, $httpProvider) {
 
     $routeProvider.when('/', {
-		templateUrl : 'partials/blog',
-		controller : 'Blog'
+		templateUrl : 'partials/deck',
+		controller : 'DeckCtrl'
 	}).when('/edit', {
 		templateUrl : 'partials/edit',
-		controller : 'Edit'
+		controller : 'EditCtrl'
 	}).otherwise('/');
 
     $httpProvider.interceptors.push(function($q) {
@@ -32,10 +32,9 @@ tammolaube.config(function($routeProvider, $locationProvider, $httpProvider) {
 
 });
 
-tammolaube.controller('Edit', function() {});
-tammolaube.controller('Blog', function() {});
+tammolaube.controller('EditCtrl', function() {});
 
-tammolaube.controller('AboutMeCtrl',
+tammolaube.controller('DeckCtrl',
                         ['$scope', '$http', function($scope, $http) {
 
     $scope.converter = new showdown.Converter();
@@ -43,13 +42,6 @@ tammolaube.controller('AboutMeCtrl',
     $http.get('/aboutme').success(function(data) {
         $scope.aboutMe = data;
     });
-
-}]);
-
-tammolaube.controller('CardListCtrl',
-                        ['$scope', '$http', function($scope, $http) {
-
-    $scope.converter = new showdown.Converter();
 
     $http.get('/cards').success(function(data) {
         $scope.cards = data;

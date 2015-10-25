@@ -14,6 +14,7 @@ class Card {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     int id
+    boolean side
     int priority
     String header
     String body

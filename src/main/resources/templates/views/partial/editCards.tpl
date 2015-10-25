@@ -5,6 +5,11 @@ yieldUnescaped '''
       <input ng-model="card.header" class="form-control" placeholder="Header"/>
     </div>
     <div class="card-block">
+      <div class="checkbox">
+        <label>
+          <input ng-model="card.side" type="checkbox"/> Side
+        </label>
+      </div>
       <fieldset class="form-group">
         <input ng-model="card.priority"
                class="form-control"

@@ -6,6 +6,13 @@ form (novalidate:'', name:"newCardForm") {
                 class:'form-control')
         }
         div (class:'card-block') {
+            div (class:'checkbox') {
+                label {
+                    input ('ng-model':'newCard.side', type:'checkbox') {
+                        yield 'Side'
+                    }
+                }
+            }
             fieldset (class:'form-group') {
                 input ('ng-model':'newCard.priority',
                     placeholder:'Priority',
