@@ -2,7 +2,38 @@ var angular = require('angular');
 var _ = require('lodash');
 var showdown = require('showdown');
 
-var tammolaube = angular.module('tammolaube', [require('angular-sanitize')]);
+var tammolaube = angular.module(
+    'tammolaube',
+    [
+        require('angular-sanitize'),
+        require('angular-route')
+    ]
+);
+
+tammolaube.config(function($routeProvider, $locationProvider, $httpProvider) {
+
+    $routeProvider.when('/', {
+		templateUrl : 'partials/blog',
+		controller : 'Blog'
+	}).when('/edit', {
+		templateUrl : 'partials/edit',
+		controller : 'Edit'
+	}).otherwise('/');
+
+    $httpProvider.interceptors.push(function($q) {
+        return {
+            'responseError': function(rejection) {
+               console.log('httpProvider:');
+               console.log(rejection);
+               return $q.reject(rejection);
+            }
+        };
+    });
+
+});
+
+tammolaube.controller('Edit', function() {});
+tammolaube.controller('Blog', function() {});
 
 tammolaube.controller('AboutMeCtrl',
                         ['$scope', '$http', function($scope, $http) {
