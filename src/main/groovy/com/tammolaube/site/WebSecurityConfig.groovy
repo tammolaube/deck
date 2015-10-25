@@ -19,10 +19,14 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+            .httpBasic()
+        .and()
             .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/**").permitAll()
-                .anyRequest().authenticated().and()
-            .csrf().csrfTokenRepository(csrfTokenRepository()).and()
+                .anyRequest().authenticated()
+        .and()
+            .csrf().csrfTokenRepository(csrfTokenRepository())
+        .and()
             .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class);
     }
 
