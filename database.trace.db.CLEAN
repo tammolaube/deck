@@ -1,0 +1,12 @@
+2015-10-25 13:21:56 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABOUT_ME" not found; SQL statement:
+select aboutme0_.id as id1_0_, aboutme0_.banner as banner2_0_, aboutme0_.body as body3_0_, aboutme0_.name as name4_0_, aboutme0_.portrait as portrait5_0_, aboutme0_.show as show6_0_, aboutme0_.title as title7_0_ from about_me aboutme0_ [42102-190]
+2015-10-25 13:21:56 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLException: Table "CARD" not found; SQL statement:
+select card0_.id as id1_1_, card0_.body as body2_1_, card0_.context_class as context_3_1_, card0_.footer as footer4_1_, card0_.header as header5_1_, card0_.priority as priority6_1_, card0_.side as side7_1_ from card card0_ [42102-190]
+2015-10-25 13:22:33 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABOUT_ME" not found; SQL statement:
+insert into about_me (id, banner, body, name, portrait, show, title) values (null, ?, ?, ?, ?, ?, ?) [42102-190]
+2015-10-25 13:22:33 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: Table "ABOUT_ME" not found; SQL statement:
+insert into about_me (id, banner, body, name, portrait, show, title) values (null, ?, ?, ?, ?, ?, ?) [42102-190]
