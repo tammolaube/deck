@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 import org.springframework.core.env.Environment
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter
@@ -12,7 +13,8 @@ import org.springframework.web.servlet.ModelAndView
 @Component
 public class EnvironmentInterceptor extends HandlerInterceptorAdapter {
 
-    final development = 'development'
+    @Value('${com.tammolaube.deck.development}')
+    final String development
 
     @Autowired
     private Environment env
