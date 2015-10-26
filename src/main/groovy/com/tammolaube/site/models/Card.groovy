@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Lob
+import javax.persistence.PreUpdate
+import javax.persistence.PrePersist
 
 @Entity
 @EqualsAndHashCode(includes=['id'])
@@ -22,7 +24,18 @@ class Card {
     String body
     String footer
     String contextClass
+    Date lastModified
+    Date dateCreated
 
     String toString() { "Card: $id" }
+
+    @PreUpdate
+    @PrePersist
+    public void updateTimeStamps() {
+        lastModified = new Date();
+        if (dateCreated==null) {
+          dateCreated = new Date();
+        }
+    }
 
 }
