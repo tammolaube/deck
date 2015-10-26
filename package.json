@@ -11,7 +11,7 @@
     "vars": "echo sassIn=$(npm run sassIn -s) jsIn=$(npm run jsIn -s) cssOut=$(npm run cssOut -s) jsOut=$(npm run jsOut -s)",
     "build": "export $(npm run vars -s) && npm run build:setup && npm run build:sass && npm run build:js",
     "build:setup": "npm run clean && npm run bower",
-    "clean": "rm $cssOut && rm $jsOut",
+    "clean": "rm $cssOut -f & rm $jsOut -f",
     "bower:install": "bower install bootstrap#4 -s",
     "bower:sync": "mkdir src/main/sass/bower_components -p && cp -r bower_components/bootstrap/scss/** src/main/sass/bower_components",
     "bower": "npm run bower:install && npm run bower:sync",
