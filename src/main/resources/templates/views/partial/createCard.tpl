@@ -31,9 +31,18 @@ form (novalidate:'', name:"newCardForm") {
             }
         }
         div (class:'card-footer') {
-            input ('ng-model':'newCard.footer',
-                placeholder:'Footer',
-                class:'form-control')
+            fieldset (class:'form-group') {
+                input ('ng-model':'newCard.footer',
+                    placeholder:'Footer',
+                    class:'form-control')
+            }
+            div (class:'checkbox') {
+                label {
+                    input ('ng-model':'newCard.hideDate', type:'checkbox') {
+                        yield 'Hide Modified/Created Date'
+                    }
+                }
+            }
         }
         div (class:'card-footer') {
             input ('ng-click':'create()',

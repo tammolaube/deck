@@ -1,5 +1,5 @@
 yieldUnescaped '''
-<div class="card" ng-repeat="card in cards | orderBy:'-priority'">
+<div class="card" ng-repeat="card in cards | orderBy:['-priority', '-dateCreated']">
   <form novalidate name="card{{ card.id }}">
     <div class="card-header">
       <input ng-model="card.header" class="form-control" placeholder="Header"/>
@@ -25,7 +25,15 @@ yieldUnescaped '''
       </fieldset>
     </div>
     <div class="card-footer">
-      <input ng-model="card.footer" class="form-control" placeholder="Footer"/>
+      <fieldset class="form-group">
+        <input ng-model="card.footer" class="form-control" placeholder="Footer"/>
+      </fieldset>
+      <div class="checkbox">
+        <label>
+          <input ng-model="card.hideDate" type="checkbox"/> Hide
+          Modified/Created Date
+        </label>
+      </div>
     </div>
   <div class="card-footer">
     <input type="submit"

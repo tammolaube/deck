@@ -8,7 +8,7 @@ layout 'layouts/partial/twoColumn.tpl',
     },
     rightColumn: contents {
         div (class:'card {{ card.contextClass }}',
-             'ng-repeat':'card in cards | filter:{side:false} | orderBy:[\'-priority\', \'dateCreated\']') {
+             'ng-repeat':'card in cards | filter:{side:false} | orderBy:[\'-priority\', \'-dateCreated\']') {
             include template:'views/partial/cardInner.tpl'
         }
     }

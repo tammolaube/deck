@@ -26,6 +26,7 @@ class Card {
     String contextClass
     Date lastModified
     Date dateCreated
+    boolean hideDate
 
     String toString() { "Card: $id" }
 
