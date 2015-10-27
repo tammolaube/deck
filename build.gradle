@@ -27,7 +27,7 @@ ext {
 }
 
 springBoot {
-    mainClass = "com.tammolaube.site.Application"
+    mainClass = "com.tammolaube.deck.Application"
 }
 
 tasks.withType(org.springframework.boot.gradle.run.BootRunTask) {

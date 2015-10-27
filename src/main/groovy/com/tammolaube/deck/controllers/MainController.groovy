@@ -1,4 +1,4 @@
-package com.tammolaube.site.controllers
+package com.tammolaube.deck.controllers
 
 import org.springframework.stereotype.Controller
 import org.springframework.beans.factory.annotation.Value

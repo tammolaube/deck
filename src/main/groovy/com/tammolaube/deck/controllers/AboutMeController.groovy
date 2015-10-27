@@ -1,4 +1,4 @@
-package com.tammolaube.site.controllers
+package com.tammolaube.deck.controllers
 
 import org.springframework.beans.factory.annotation.Autowired
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.PathVariable
 
-import com.tammolaube.site.models.AboutMe
-import com.tammolaube.site.models.AboutMeRepository
+import com.tammolaube.deck.models.AboutMe
+import com.tammolaube.deck.models.AboutMeRepository
 
 @RestController
 @RequestMapping('/aboutme')

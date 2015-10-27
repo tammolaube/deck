@@ -1,4 +1,4 @@
-package com.tammolaube.site.models
+package com.tammolaube.deck.models
 
 import org.springframework.data.repository.CrudRepository
 

@@ -1,4 +1,4 @@
-package com.tammolaube.site.filters
+package com.tammolaube.deck.filters
 
 import java.io.IOException
 

@@ -1,4 +1,4 @@
-package com.tammolaube.site
+package com.tammolaube.deck
 
 import org.springframework.security.web.csrf.CsrfFilter
 
@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 import org.springframework.security.web.csrf.CsrfTokenRepository
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository
 
-import com.tammolaube.site.filters.CsrfHeaderFilter
+import com.tammolaube.deck.filters.CsrfHeaderFilter
 
 @Configuration
 @EnableWebMvcSecurity
